@@ -8,8 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="MVVM\ViewModel\" />
-    <Folder Include="MVVM\View\" />
     <Folder Include="MVVM\Model\" />
   </ItemGroup>
 

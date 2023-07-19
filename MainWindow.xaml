@@ -3,30 +3,36 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:Triangles.MVVM.ViewModel"
         xmlns:local="clr-namespace:Triangles"
         xmlns:helpers="clr-namespace:Triangles.Helpers"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280">
-    
-    
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
     <Border Background="#272537">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="300"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="75"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+            <Rectangle Grid.Row="0" Grid.ColumnSpan="2" Fill="#1b1a26"/>
+            
             <TextBlock Text="Triangle Properties"
-                   VerticalAlignment="Center"
+                   VerticalAlignment="Top"
                    HorizontalAlignment="Left"
                    Foreground="White"
                    FontSize="22"
-                   Margin="10,0,0,0"/>
+                   Margin="30,20,0,0"/>
 
             <StackPanel Grid.Row="1">
 
@@ -35,7 +41,7 @@
                      VerticalContentAlignment="Center"
                      VerticalAlignment="Top"
                      HorizontalAlignment="Left"
-                     Margin="10"
+                     Margin="30, 45, 10, 10"
                      Grid.Row="1"
                      Style="{StaticResource ResourceKey=TextBoxTheme}"
                      helpers:TextBoxHelper.IsNumericOnly="True"/>
@@ -44,7 +50,7 @@
                      VerticalContentAlignment="Center"
                      VerticalAlignment="Top"
                      HorizontalAlignment="Left"
-                     Margin="10"
+                     Margin="30, 10, 10, 10"
                      Grid.Row="1"
                      Style="{StaticResource ResourceKey=TextBoxTheme}"
                      helpers:TextBoxHelper.IsNumericOnly="True"/>
@@ -53,7 +59,7 @@
                      VerticalContentAlignment="Center"
                      VerticalAlignment="Top"
                      HorizontalAlignment="Left"
-                     Margin="10"
+                     Margin="30, 10, 10, 10"
                      Grid.Row="1"
                      Style="{StaticResource ResourceKey=TextBoxTheme}"
                      helpers:TextBoxHelper.IsNumericOnly="True"/>
@@ -65,7 +71,6 @@
 
             <ContentControl Grid.Row="1"
                             Grid.Column="1"
-                            Margin="10"
                             Content="{Binding CurrentView}"/>
 
         </Grid>
