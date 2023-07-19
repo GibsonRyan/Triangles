@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Triangles"
+        xmlns:helpers="clr-namespace:Triangles.Helpers"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280">
     
@@ -16,30 +17,51 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="75"/>
+                <RowDefinition Height="100"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Triangles"
+            <TextBlock Text="Triangle Properties"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Left"
                    Foreground="White"
                    FontSize="22"
-                   Margin="20,0,0,0"/>
+                   Margin="10,0,0,0"/>
 
             <StackPanel Grid.Row="1">
 
-                
+                <TextBox Width="180"
+                     Height="40"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Top"
+                     HorizontalAlignment="Left"
+                     Margin="10"
+                     Grid.Row="1"
+                     Style="{StaticResource ResourceKey=TextBoxTheme}"
+                     helpers:TextBoxHelper.IsNumericOnly="True"/>
+                <TextBox Width="180"
+                     Height="40"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Top"
+                     HorizontalAlignment="Left"
+                     Margin="10"
+                     Grid.Row="1"
+                     Style="{StaticResource ResourceKey=TextBoxTheme}"
+                     helpers:TextBoxHelper.IsNumericOnly="True"/>
+                <TextBox Width="180"
+                     Height="40"
+                     VerticalContentAlignment="Center"
+                     VerticalAlignment="Top"
+                     HorizontalAlignment="Left"
+                     Margin="10"
+                     Grid.Row="1"
+                     Style="{StaticResource ResourceKey=TextBoxTheme}"
+                     helpers:TextBoxHelper.IsNumericOnly="True"/>
+
 
             </StackPanel>
 
-            <TextBox Width="250"
-                     Height="40"
-                     VerticalContentAlignment="Center"
-                     HorizontalAlignment="Left"
-                     Margin="5"
-                     Grid.Column="1"
-                     Style="{StaticResource ResourceKey=TextBoxTheme}"/>
+            
 
             <ContentControl Grid.Row="1"
                             Grid.Column="1"

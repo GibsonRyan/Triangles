@@ -7,7 +7,7 @@
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border CornerRadius="10"
                             Background="#353340"
-                            Width="200" Height="40">
+                            Width="180" Height="40">
                         <Grid>
                             <Rectangle StrokeThickness="1"/>
                             <TextBox Margin="1"
@@ -17,9 +17,9 @@
                                      VerticalAlignment="Center"
                                      Padding="5"
                                      Foreground="#cfcfcf"
-                                     x:Name="SearchBox"/>
+                                     x:Name="SideLengthBox"/>
                             <TextBlock IsHitTestVisible="False"
-                                       Text="Side 1"
+                                       Text="Input the side length"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Left"
                                        Margin="10,0,0,0"
@@ -29,7 +29,7 @@
                                 <TextBlock.Style>
                                     <Style TargetType="{x:Type TextBlock}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Text, ElementName=searchBox}" Value="">
+                                            <DataTrigger Binding="{Binding Text, ElementName=SideLengthBox}" Value="">
                                                 <Setter Property="Visibility" Value="Visible"/>
                                             </DataTrigger>
                                         </Style.Triggers>
