@@ -3,9 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Triangles.MVVM.View"
+             xmlns:viewModel="clr-namespace:Triangles.MVVM.ViewModel"
+             xmlns:local="clr-namespace:Triangles.MVVM.View" 
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600">
+
     <StackPanel>
         <StackPanel Orientation="Horizontal"
                     Margin="0,0,0,10">
@@ -15,14 +17,14 @@
                     Background="#3aa0ff">
 
                 <Grid>
-                        <TextBlock Text="Is Triangle Valid?"
+                    <TextBlock Text="Triangle Validity"
                                    Foreground="White"
                                    FontSize="20"
                                    Margin="20,10,10,0"
                                    HorizontalAlignment="Center"/>
-                        <TextBlock Text="yes"
+                    <TextBlock Text="{Binding IsValidTriangle}"
                                    Foreground="White"
-                                   FontSize="30"
+                                   FontSize="18"
                                    Margin="20,10,10,0"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"/>
@@ -35,14 +37,14 @@
                     Margin="45">
 
                 <Grid>
-                        <TextBlock Text="Angle Values"
+                    <TextBlock Text="Angle Values"
                                    Foreground="Black"
                                    FontSize="20"
                                    Margin="20,10,10,0"
                                    HorizontalAlignment="Center"/>
-                        <TextBlock Text="val1 &#x0a;val2 &#x0a;val3"
+                    <TextBlock Text="{Binding AngleValues}"
                                    Foreground="Black"
-                                   FontSize="30"
+                                   FontSize="18"
                                    Margin="20,10,10,0"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"/>
@@ -51,19 +53,19 @@
             </Border>
         </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal">
             <Border Width="200"
                     Height="200"
                     CornerRadius="10"
                     Background="#4eff91">
 
                 <Grid>
-                        <TextBlock Text="Side Classification"
+                    <TextBlock Text="Side Classification"
                                    Foreground="Black"
                                    FontSize="20"
                                    Margin="20,10,10,0"
                                    HorizontalAlignment="Center"/>
-                        <TextBlock Text="Scalene"
+                    <TextBlock Text="{Binding SideClassification}"
                                    Foreground="Black"
                                    FontSize="30"
                                    Margin="20,10,10,0"
@@ -79,12 +81,12 @@
                     Margin="45,0,0,0">
 
                 <Grid>
-                        <TextBlock Text="Angle Classification"
+                    <TextBlock Text="Angle Classification"
                                    Foreground="White"
                                    FontSize="20"
                                    Margin="20,10,10,0"
                                    HorizontalAlignment="Center"/>
-                        <TextBlock Text="Acute"
+                    <TextBlock Text="{Binding AngleClassification}"
                                    Foreground="White"
                                    FontSize="30"
                                    Margin="20,10,10,0"
@@ -95,5 +97,5 @@
             </Border>
         </StackPanel>
 
-        </StackPanel>
+    </StackPanel>
 </UserControl>

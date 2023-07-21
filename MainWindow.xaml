@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModel="clr-namespace:Triangles.MVVM.ViewModel"
+        xmlns:view="clr-namespace:Triangles.MVVM.View"
         xmlns:local="clr-namespace:Triangles"
         xmlns:helpers="clr-namespace:Triangles.Helpers"
         mc:Ignorable="d"
@@ -16,7 +17,7 @@
     <Border Background="#272537">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="250"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
@@ -26,7 +27,7 @@
             </Grid.RowDefinitions>
 
             <Rectangle Grid.Row="0" Grid.ColumnSpan="2" Fill="#1b1a26"/>
-            
+
             <TextBlock Text="Triangle Properties"
                    VerticalAlignment="Top"
                    HorizontalAlignment="Left"
@@ -35,43 +36,61 @@
                    Margin="30,20,0,0"/>
 
             <StackPanel Grid.Row="1">
+                <TextBlock Text="Side lengths"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Foreground="White"
+                   FontSize="15"
+                   Margin="30,15,0,0"/>
 
                 <TextBox Width="180"
                      Height="40"
                      VerticalContentAlignment="Center"
                      VerticalAlignment="Top"
                      HorizontalAlignment="Left"
-                     Margin="30, 45, 10, 10"
-                     Grid.Row="1"
+                     Margin="30, 10, 10, 10"
                      Style="{StaticResource ResourceKey=TextBoxTheme}"
-                     helpers:TextBoxHelper.IsNumericOnly="True"/>
+                     helpers:TextBoxHelper.IsNumericOnly="True"
+                     Text="{Binding Side1, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox Width="180"
                      Height="40"
                      VerticalContentAlignment="Center"
                      VerticalAlignment="Top"
                      HorizontalAlignment="Left"
                      Margin="30, 10, 10, 10"
-                     Grid.Row="1"
                      Style="{StaticResource ResourceKey=TextBoxTheme}"
-                     helpers:TextBoxHelper.IsNumericOnly="True"/>
+                     helpers:TextBoxHelper.IsNumericOnly="True"
+                     Text="{Binding Side2, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox Width="180"
                      Height="40"
                      VerticalContentAlignment="Center"
                      VerticalAlignment="Top"
                      HorizontalAlignment="Left"
                      Margin="30, 10, 10, 10"
-                     Grid.Row="1"
                      Style="{StaticResource ResourceKey=TextBoxTheme}"
-                     helpers:TextBoxHelper.IsNumericOnly="True"/>
-
+                     helpers:TextBoxHelper.IsNumericOnly="True"
+                     Text="{Binding Side3, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Width="100"
+                     Height="40"
+                     VerticalAlignment="Top"
+                     HorizontalAlignment="Left"
+                     Margin="30,10,0,0"
+                     Background="#3aa0ff"
+                     Foreground="White"
+                     Command="{Binding ClearCommand}"
+                     Content="Clear Input">
+                    
+                </Button>
 
             </StackPanel>
 
-            
 
-            <ContentControl Grid.Row="1"
+            <ContentControl Content="{Binding CurrentView}"
+                            
+                            Grid.Row="1"
                             Grid.Column="1"
-                            Content="{Binding CurrentView}"/>
+                            Margin="20,0,0,0"/>
+
 
         </Grid>
 

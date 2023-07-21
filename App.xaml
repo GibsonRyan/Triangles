@@ -10,13 +10,17 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Themes/TextBoxTheme.xaml"/>
-                
+
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:InfoViewModel}">
                 <view:InfoView/>
             </DataTemplate>
-            
+
+            <DataTemplate DataType="{x:Type viewModel:InputViewModel}">
+                <view:InputView/>
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

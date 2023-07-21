@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Triangles.Base;
+using Triangles.Helpers;
 
 namespace Triangles.MVVM.ViewModel
 {
@@ -13,11 +14,14 @@ namespace Triangles.MVVM.ViewModel
     {
 
         public RelayCommand InfoViewCommand { get; set; }
+        public RelayCommand ClearCommand { get; set; }
         public InfoViewModel InfoVM { get; set; }
+        public InputViewModel InputVM { get; set; }
 
-        private string _text1;
-        private string _text2;
-        private string _text3;
+
+        private string _side1;
+        private string _side2;
+        private string _side3;
 
         private object _currentView;
 
@@ -32,61 +36,87 @@ namespace Triangles.MVVM.ViewModel
         }
 
 
-        public string Text1
+        public string Side1
         {
-            get { return _text1; }
+            get { return _side1; }
             set
             {
-                _text1 = value;
-                OnPropertyChanged("Text1");
+                _side1 = value;
+                OnPropertyChanged(nameof(Side1));
+                CalculateTriangleProperties();
             }
         }
 
-        public string Text2
+        public string Side2
         {
-            get { return _text2; }
+            get { return _side2; }
             set
             {
-                _text2 = value;
-                OnPropertyChanged("Text2");
+                _side2 = value;
+                OnPropertyChanged(nameof(Side2));
+                CalculateTriangleProperties();
             }
         }
 
-        public string Text3
+        public string Side3
         {
-            get { return _text3; }
+            get { return _side3; }
             set
             {
-                _text3 = value;
-                OnPropertyChanged("Text3");
+                _side3 = value;
+                OnPropertyChanged(nameof(Side3));
+                CalculateTriangleProperties();
             }
-        }
-
-        private void Clear()
-        {
-            Text1 = string.Empty;
-            Text2 = string.Empty;
-            Text3 = string.Empty;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public MainViewModel()
         {
             InfoVM = new InfoViewModel();
-            CurrentView = InfoVM;
+            InputVM = new InputViewModel();
+            CurrentView = InputVM;
 
-            InfoViewCommand = new RelayCommand(o =>
+            ClearCommand = new RelayCommand(o => Clear());
+        }
+
+        private void Clear()
+        {
+            Side1 = string.Empty;
+            Side2 = string.Empty;
+            Side3 = string.Empty;
+        }
+
+        private void CalculateTriangleProperties()
+        {
+            if (double.TryParse(Side1, out double s1) &&
+                double.TryParse(Side2, out double s2) &&
+                double.TryParse(Side3, out double s3))
             {
                 CurrentView = InfoVM;
-            });
+                if (s1 + s2 > s3 && s1 + s3 > s2 && s2 + s3 > s1)
+                {
+                    List<double> angles = TriangleCalculator.CalculateAngleValues(s1, s2, s3);
+                    for (int i = 0; i < angles.Count; i++)
+                    {
+                        angles[i] = Math.Round(angles[i], 2);
+                    }
 
-            
+                    InfoVM.IsValidTriangle = "The side lengths \nprovided make a \nvalid triangle";
+                    InfoVM.SideClassification = TriangleCalculator.CalculateSideClassification(s1, s2, s3);
+                    InfoVM.AngleClassification = TriangleCalculator.CalculateAngleClassification(s1, s2, s3);
+                    InfoVM.AngleValues = $"Angle 1: {angles[0]}° \nAngle 2: {angles[1]}° \nAngle 3: {angles[2]}°";
+                }
+                else
+                {
+                    InfoVM.IsValidTriangle = "The side lengths \nprovided do not \nform a valid \ntriangle";
+                    InfoVM.SideClassification = "N/A";
+                    InfoVM.AngleClassification = "N/A";
+                    InfoVM.AngleValues = "Angle 1: N/A \nAngle 2: N/A \nAngle 3: N/A";
+                }
+            }
+            else
+            {
+                CurrentView = InputVM;
+            }
         }
 
     }

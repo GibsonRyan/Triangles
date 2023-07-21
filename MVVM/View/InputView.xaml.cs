@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace Triangles.MVVM.View
 {
     /// <summary>
-    /// Interaction logic for InfoView.xaml
+    /// Interaction logic for InputView.xaml
     /// </summary>
-    public partial class InfoView : UserControl
+    public partial class InputView : UserControl
     {
-        public InfoView()
+        public InputView()
         {
             InitializeComponent();
         }
-
     }
 }

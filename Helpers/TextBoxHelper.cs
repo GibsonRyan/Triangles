@@ -41,16 +41,20 @@ namespace Triangles.Helpers
 
         private static void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (!IsTextAllowed(e.Text))
+            if (!IsTextAllowed(e.Text, (TextBox)sender))
             {
                 e.Handled = true;
             }
         }
 
-        private static bool IsTextAllowed(string text)
+        private static bool IsTextAllowed(string text, TextBox textBox)
         {
-            Regex regex = new Regex("[^0-9.-]+"); //regex that matches disallowed text
-            return !regex.IsMatch(text);
+            Regex regex = new Regex("[^0-9.]+"); 
+
+            bool isMatch = !regex.IsMatch(text);
+            bool onlyOneDot = (textBox.Text + text).Count(c => c == '.') <= 1;
+
+            return isMatch && onlyOneDot;
         }
     }
 
