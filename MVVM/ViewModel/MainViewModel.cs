@@ -1,10 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using Triangles.Base;
 using Triangles.Helpers;
 
@@ -13,12 +8,12 @@ namespace Triangles.MVVM.ViewModel
     class MainViewModel : ObservableObject
     {
 
-        public RelayCommand InfoViewCommand { get; set; }
+        private const string NA = "N/A";
+        
         public RelayCommand ClearCommand { get; set; }
         public InfoViewModel InfoVM { get; set; }
         public InputViewModel InputVM { get; set; }
-
-
+        
         private string _side1;
         private string _side2;
         private string _side3;
@@ -75,7 +70,7 @@ namespace Triangles.MVVM.ViewModel
             InputVM = new InputViewModel();
             CurrentView = InputVM;
 
-            ClearCommand = new RelayCommand(o => Clear());
+            ClearCommand = new RelayCommand(Clear);
         }
 
         private void Clear()
@@ -108,9 +103,9 @@ namespace Triangles.MVVM.ViewModel
                 else
                 {
                     InfoVM.IsValidTriangle = "The side lengths \nprovided do not \nform a valid \ntriangle";
-                    InfoVM.SideClassification = "N/A";
-                    InfoVM.AngleClassification = "N/A";
-                    InfoVM.AngleValues = "Angle 1: N/A \nAngle 2: N/A \nAngle 3: N/A";
+                    InfoVM.SideClassification = NA;
+                    InfoVM.AngleClassification = NA;
+                    InfoVM.AngleValues = $"Angle 1: {NA} \nAngle 2: {NA} \nAngle 3: {NA}";
                 }
             }
             else

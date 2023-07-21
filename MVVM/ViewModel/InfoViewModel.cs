@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Triangles.Base;
 
 namespace Triangles.MVVM.ViewModel
@@ -21,7 +16,7 @@ namespace Triangles.MVVM.ViewModel
             get { return _sideClassification; }
             set
             {
-                _sideClassification = value.ToString();
+                _sideClassification = value;
                 OnPropertyChanged(nameof(SideClassification));
             }
         }
@@ -31,7 +26,7 @@ namespace Triangles.MVVM.ViewModel
             get { return _angleClassification; }
             set
             {
-                _angleClassification = value.ToString();
+                _angleClassification = value;
                 OnPropertyChanged(nameof(AngleClassification));
             }
         }
